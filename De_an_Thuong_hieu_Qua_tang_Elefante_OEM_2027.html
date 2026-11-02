@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đề án Phát triển Thương hiệu Quà tặng ELEFANTE &amp; Mô hình OEM/ODM Xuất khẩu 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root{
+    --ink:#17211d; --ink-soft:#41504a; --muted:#6d7a74;
+    --forest:#14312b; --forest-2:#1d443b; --clay:#c2643f; --clay-soft:#f3e2d8;
+    --gold:#c8a24a; --sage:#7d9c8c; --cream:#faf7f1; --sand:#f1ebe0; --line:#e3dccf;
+    --ok:#3f8f66; --warn:#c98a2e; --bad:#b4453a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Lexend',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:15px}
+  a{color:var(--clay);text-decoration:none;transition:color .2s}
+  a:hover{text-decoration:underline;color:#a04a27}
+
+  /* shell */
+  .app{display:flex;min-height:100vh}
+  .side{width:268px;flex:0 0 268px;background:var(--forest);color:#e9efe9;position:sticky;top:0;height:100vh;overflow-y:auto;padding:26px 18px 40px}
+  .side .brand{font-size:1.05rem;font-weight:800;letter-spacing:.14em;color:#fff}
+  .side .brand span{color:var(--gold)}
+  .side .sub{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#93a89f;margin:6px 0 22px}
+  .side nav a{display:flex;gap:9px;align-items:flex-start;padding:7px 9px;border-radius:8px;color:#cfdad4;font-size:.79rem;line-height:1.35;margin-bottom:2px}
+  .side nav a:hover{background:rgba(255,255,255,.07);color:#fff;text-decoration:none}
+  .side nav a i{width:14px;margin-top:2px;color:var(--gold);font-size:.72rem}
+  .side .side-foot{margin-top:22px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);font-size:.68rem;color:#8fa39a}
+
+  /* main */
+  .main{flex:1;min-width:0;padding:0 0 60px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 34px}
+
+  .hero{background:linear-gradient(135deg,#12302a 0%,#1d443b 55%,#2a5a4c 100%);color:#fff;padding:58px 0 46px;position:relative;overflow:hidden}
+  .hero:after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(200,162,74,.28),transparent 65%)}
+  .kicker{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  .hero h1{font-size:2.05rem;line-height:1.24;margin:14px 0 14px;font-weight:800;max-width:900px}
+  .hero p.lead{font-size:.95rem;color:#d7e2db;max-width:820px}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:5px 11px;border-radius:999px;font-size:.71rem;color:#eaf1ec}
+  .chip b{color:#fff}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-26px;position:relative;z-index:2}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 15px;box-shadow:0 8px 22px rgba(20,49,43,.07)}
+  .kpi .n{font-size:1.32rem;font-weight:800;color:var(--forest);letter-spacing:-.02em}
+  .kpi .l{font-size:.7rem;color:var(--muted);margin-top:2px;line-height:1.35}
+
+  section.sec{padding:44px 0 6px;border-top:1px solid var(--line);margin-top:34px}
+  section.sec:first-of-type{border-top:none}
+  .sec-h{font-size:1.32rem;font-weight:800;color:var(--forest);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;line-height:1.3}
+  .sec-h i{color:var(--clay);font-size:1rem}
+  .sec-h small{display:block;font-size:.72rem;font-weight:500;color:var(--muted);letter-spacing:.02em;margin-top:3px}
+  .sec > p,.sec .wrap > p{color:var(--ink-soft);margin:14px 0;font-size:.92rem}
+  h3.sub{font-size:1rem;font-weight:700;color:var(--forest);margin:26px 0 10px;display:flex;gap:8px;align-items:center}
+  h3.sub i{color:var(--sage);font-size:.85rem}
+  h4.mini-h{font-size:.9rem;font-weight:700;margin:14px 0 8px;color:var(--ink)}
+
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+  .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 18px}
+  .box h4{font-size:.88rem;font-weight:700;margin-bottom:8px;display:flex;gap:7px;align-items:center}
+  .box p{font-size:.84rem;color:var(--ink-soft)}
+  .box ul{margin:8px 0 0 0;list-style:none}
+  .box li{font-size:.83rem;color:var(--ink-soft);padding-left:16px;position:relative;margin-bottom:6px}
+  .box li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--sage)}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0}
+  .card .tagline{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .card h4{font-size:1rem;margin:5px 0 8px;color:var(--forest)}
+  .card p{font-size:.86rem;color:var(--ink-soft)}
+  .pill{display:inline-block;font-size:.66rem;padding:3px 9px;border-radius:999px;background:var(--clay-soft);color:#8d3f22;font-weight:600;margin-right:6px}
+  .pill.gray{background:var(--sand);color:#6a5a45}
+  .pill.green{background:#e2f2e9;color:#236e47}
+  .pill.blue{background:#e0effa;color:#1e5b8a}
+
+  .callout{border-left:4px solid var(--clay);background:#fff;border-radius:0 10px 10px 0;padding:14px 16px;margin:16px 0;font-size:.85rem;color:var(--ink-soft)}
+  .callout b{color:var(--ink)}
+  .callout.blue{border-left-color:var(--sage)}
+  .callout.warn{border-left-color:var(--warn);background:#fffaf0}
+  .callout h4{color:var(--ink);margin-bottom:5px;font-size:.86rem;display:flex;gap:7px;align-items:center}
+
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:14px 0;font-size:.8rem}
+  th{background:var(--forest);color:#fff;text-align:left;padding:10px 11px;font-weight:600;font-size:.73rem;letter-spacing:.03em;text-transform:uppercase;vertical-align:bottom}
+  td{padding:10px 11px;border-top:1px solid var(--line);color:var(--ink-soft);vertical-align:top}
+  tbody tr:nth-child(even) td{background:#fcfaf5}
+  tbody tr:hover td{background:#f7f2e7}
+  td b{color:var(--ink)}
+
+  .btn-link{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:#f3e2d8;color:#8d3f22;font-weight:600;font-size:.72rem;margin-top:4px}
+  .btn-link:hover{background:#c2643f;color:#fff;text-decoration:none}
+  .btn-ali{background:#ff6a00;color:#fff!important;padding:4px 9px;border-radius:5px;font-size:.7rem;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+  .btn-ali:hover{background:#e05b00;text-decoration:none}
+
+  .chart-wrap{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}
+  .chart-wrap h4{font-size:.85rem;color:var(--forest);margin-bottom:2px}
+  .chart-wrap .cap{font-size:.7rem;color:var(--muted);margin-bottom:10px}
+  .chart-box{position:relative;height:250px}
+
+  .steps{counter-reset:s;margin:14px 0}
+  .step{display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--clay);color:#fff;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .step .b{font-size:.85rem;color:var(--ink-soft)}
+  .step .b b{color:var(--ink)}
+
+  .tl{position:relative;margin:18px 0 0 8px;padding-left:22px;border-left:2px solid var(--sand)}
+  .tl .item{position:relative;margin-bottom:16px}
+  .tl .item:before{content:"";position:absolute;left:-29px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--clay);border:2px solid var(--cream)}
+  .tl .when{font-size:.68rem;font-weight:700;letter-spacing:.08em;color:var(--clay);text-transform:uppercase}
+  .tl .what{font-size:.86rem;color:var(--ink-soft);margin-top:2px}
+  .tl .what b{color:var(--ink)}
+
+  /* pricing selector */
+  .sel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}
+  .sel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .opt{position:relative;border:1px solid var(--line);border-radius:10px;padding:12px 13px;cursor:pointer;transition:.15s;background:#fdfbf7}
+  .opt:hover{border-color:var(--clay)}
+  .opt input{position:absolute;opacity:0;pointer-events:none}
+  .opt .nm{font-size:.82rem;font-weight:700;color:var(--forest)}
+  .opt .pr{font-size:.76rem;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+  .opt.on{border-color:var(--clay);box-shadow:0 0 0 3px rgba(194,100,63,.13);background:#fff}
+  .sel-actions{display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}
+  .btn{border:1px solid var(--clay);background:var(--clay);color:#fff;border-radius:8px;padding:8px 14px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--clay)}
+  .out{font-size:.82rem;color:var(--ink-soft)}
+  .out b{color:var(--forest);font-size:.95rem}
+
+  /* Trend product card */
+  .trend-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s, box-shadow .2s}
+  .trend-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(20,49,43,.08)}
+  .trend-badge{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:var(--sand);color:var(--forest);margin-bottom:8px}
+  .trend-title{font-size:.9rem;font-weight:700;color:var(--forest);margin-bottom:6px;line-height:1.35}
+  .trend-desc{font-size:.8rem;color:var(--ink-soft);line-height:1.45;margin-bottom:12px}
+
+  footer{background:var(--forest);color:#c9d7cf;margin-top:50px;padding:34px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer h5{color:#fff;font-size:.85rem;margin-bottom:6px}
+  footer p,footer li{font-size:.74rem;color:#a9bbb1;line-height:1.6}
+  footer ul{list-style:none}
+
+  @media (max-width:1020px){
+    .side{display:none}
+    .kpis{grid-template-columns:1fr 1fr;margin-top:20px}
+    .g2,.g3,.g4,.sel-grid{grid-template-columns:1fr}
+    .hero h1{font-size:1.55rem}
+    .wrap{padding:0 18px}
+  }
+  @media print{.side{display:none}.app{display:block}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <div class="brand">ELEFANTE<span>.</span></div>
+    <div class="sub">Đề án B2B 2027</div>
+    <nav>
+      <a href="#sec1"><i class="fa-solid fa-magnifying-glass-chart"></i> 1. Chẩn đoán hiện trạng</a>
+      <a href="#sec2"><i class="fa-solid fa-compass"></i> 2. Định vị thương hiệu</a>
+      <a href="#sec3"><i class="fa-solid fa-chart-line"></i> 3. Thị trường quà tặng</a>
+      <a href="#sec4"><i class="fa-solid fa-industry"></i> 4. Mô hình OEM/ODM</a>
+      <a href="#sec5"><i class="fa-solid fa-gift"></i> 5. Kiến trúc bộ quà</a>
+      <a href="#sec6"><i class="fa-solid fa-certificate"></i> 6. Chứng nhận &amp; Tiêu chuẩn</a>
+      <a href="#sec7"><i class="fa-solid fa-folder-open"></i> 7. Hồ sơ lên sàn</a>
+      <a href="#sec8"><i class="fa-solid fa-diagram-project"></i> 8. Quy trình &amp; timeline</a>
+      <a href="#sec9"><i class="fa-solid fa-gauge-high"></i> 9. Vận hành</a>
+      <a href="#sec10"><i class="fa-solid fa-chalkboard-user"></i> 10. Training</a>
+      <a href="#sec11"><i class="fa-solid fa-tags"></i> 11. Gói thành viên</a>
+      <a href="#sec12"><i class="fa-solid fa-users-viewfinder"></i> 12. Benchmark 8 đối thủ</a>
+      <a href="#sec13"><i class="fa-solid fa-fire"></i> 13. Sản phẩm xu hướng Alibaba</a>
+      <a href="#sec14"><i class="fa-solid fa-calendar-check"></i> 14. KPI &amp; rủi ro</a>
+    </nav>
+    <div class="side-foot">Dữ liệu nguồn: elefanteco.com; alibaba.com; Báo cáo thị trường Drinkware &amp; Promotional Gifts toàn cầu.</div>
+  </aside>
+
+  <main class="main">
+    <header class="hero">
+      <div class="wrap">
+        <div class="kicker">Đề án chiến lược · Quà tặng doanh nghiệp &amp; OEM Xuất khẩu 2027</div>
+        <h1>ELEFANTE — Từ thương hiệu bình giữ nhiệt thành<br>công ty giải pháp quà tặng mang dấu ấn thương hiệu</h1>
+        <p class="lead">Tái định vị Elefante thành đơn vị cung cấp <b>bộ quà tặng doanh nghiệp</b> phân khúc trung và cao cấp, phát triển song song <b>OEM/ODM</b> cho thương hiệu quốc tế, và xây dựng năng lực bán hàng B2B trên nền tảng Alibaba.com trong năm 2027.</p>
+        <div class="meta">
+          <span class="chip"><b>80</b> SKU hiện có</span>
+          <span class="chip"><b>3</b> nhóm quà tặng B2B</span>
+          <span class="chip"><b>4</b> hình thức cá nhân hóa</span>
+          <span class="chip">Phiên bản chiến lược <b>2027</b></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="kpis">
+        <div class="kpi"><div class="n">80</div><div class="l">sản phẩm đang niêm yết trên /shop/</div></div>
+        <div class="kpi"><div class="n">3</div><div class="l">nhóm quà: đối tác · sự kiện · nhân viên</div></div>
+        <div class="kpi"><div class="n">6–12h</div><div class="l">giữ nhiệt công bố trên trang sản phẩm</div></div>
+        <div class="kpi"><div class="n">B2B Ready</div><div class="l">định hướng chuẩn hóa bảng giá &amp; MOQ</div></div>
+      </div>
+    </div>
+
+    <!-- CH1 -->
+    <section id="sec1" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-magnifying-glass-chart"></i> Chương 1: Chẩn đoán hiện trạng Elefante <small>Dữ liệu đọc trực tiếp từ elefanteco.com</small></h2>
+
+        <p>Elefante hiện vận hành một cửa hàng WooCommerce bán bình và ly giữ nhiệt, có sẵn hạ tầng cho quà tặng doanh nghiệp nhưng chưa được tổ chức thành một dòng kinh doanh riêng. Đây là điểm xuất phát thuận lợi: sản phẩm, cá nhân hóa và phễu liên hệ đều đã có, thiếu là <b>cấu trúc thương mại B2B</b>.</p>
+
+        <div class="g2">
+          <div class="box">
+            <h4><i class="fa-solid fa-circle-check" style="color:var(--ok)"></i> Nền tảng đã có</h4>
+            <ul>
+              <li><b>80 sản phẩm</b> thuộc 6 nhóm: ly cà phê, bình giữ nhiệt, bình nước trẻ em, có quai, có ống hút, du lịch.</li>
+              <li><b>Cấu tạo công bố:</b> lòng bình inox SUS316, vỏ ngoài SUS201, giữ nóng/lạnh 6–12 giờ.</li>
+              <li><b>Ba phương pháp hiệu đính:</b> khắc laser, in lụa, in 3D — phù hợp logo doanh nghiệp.</li>
+              <li><b>Cá nhân hóa 4 kiểu:</b> khắc tên, khắc logo, khắc quote, chọn icon.</li>
+              <li><b>Ba nhóm quà tặng:</b> quà đối tác, quà sự kiện, quà nhân viên.</li>
+              <li><b>Hạ tầng bán:</b> hotline 0828 882 826, Messenger m.me/ElefanteVN, freeship đơn từ 500.000 ₫.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4><i class="fa-solid fa-triangle-exclamation" style="color:var(--warn)"></i> Khoảng trống chặn tăng trưởng B2B</h4>
+            <ul>
+              <li><b>Không có giá công khai theo bậc số lượng:</b> các sản phẩm đều ghi “Tư vấn để nhận giá ưu đãi”, gây khó cho procurement manager tự lập dự toán.</li>
+              <li><b>Không có trang B2B độc lập:</b> thiếu bảng MOQ, lead time, quy trình mẫu, chính sách đổi trả, mẫu hợp đồng.</li>
+              <li><b>Chưa công bố chứng nhận quốc tế:</b> chưa số hóa các chứng nhận FDA, LFGB, ISO 9001 — rào cản với khách EU/Mỹ.</li>
+              <li><b>Không có hồ sơ năng lực (Capability Deck):</b> chưa truyền thông rõ rệt về công suất, dây chuyền, hệ thống QC.</li>
+              <li><b>Danh mục dàn trải:</b> 80 SKU chưa phân tầng giá rõ rệt theo bộ giải pháp quà tặng.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h4><i class="fa-solid fa-lightbulb"></i> Kết luận chẩn đoán</h4>
+          Elefante đang bán <b>sản phẩm</b>, trong khi khách doanh nghiệp mua <b>giải pháp</b>: ngân sách mỗi suất quà, thời hạn giao, mức độ đồng bộ với nhận diện, và bằng chứng an toàn. Ba câu hỏi đầu tiên của một procurement manager là “bao nhiêu một suất”, “bao lâu có hàng”, “có chứng nhận gì” — cần được giải quyết triệt để trên kênh B2B.
+        </div>
+      </div>
+    </section>
+
+    <!-- CH2 -->
+    <section id="sec2" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-compass"></i> Chương 2: Định vị thương hiệu <small>Từ “brand bán bình” sang “gifting studio”</small></h2>
+
+        <p>Định vị đề xuất không phủ nhận gốc sản phẩm, mà nâng cấp cách bán: Elefante bán <b>bộ quà được thiết kế</b>, trong đó bình giữ nhiệt là vật phẩm trung tâm. Cách này giữ được lợi thế 80 SKU và mở được giá trị đơn hàng cao hơn.</p>
+
+        <div class="callout blue">
+          <h4><i class="fa-solid fa-quote-left"></i> Câu định vị</h4>
+          <b>“Elefante — quà tặng doanh nghiệp được thiết kế như một ấn phẩm thương hiệu: đúng ngân sách, đúng hạn, đúng nhận diện.”</b>
+        </div>
+
+        <div class="g3">
+          <div class="box">
+            <h4><i class="fa-solid fa-layer-group"></i> Trụ 1 — Curated</h4>
+            <p>Tuyển chọn theo ngân sách: 3 dải (dưới 350.000 ₫, 350.000–700.000 ₫, trên 700.000 ₫) thay vì để khách tự dò 80 SKU.</p>
+          </div>
+          <div class="box">
+            <h4><i class="fa-solid fa-pen-ruler"></i> Trụ 2 — Personalized</h4>
+            <p>Chuẩn hóa brand kit: PMS màu, file logo, vị trí khắc, giới hạn kỹ thuật theo từng phương pháp in.</p>
+          </div>
+          <div class="box">
+            <h4><i class="fa-solid fa-truck-fast"></i> Trụ 3 — Delivered</h4>
+            <p>Cam kết thời gian: mẫu 5–7 ngày, sản xuất 15–25 ngày, giao theo lịch sự kiện — công bố công khai thay vì “liên hệ”.</p>
+          </div>
+        </div>
+
+        <h3 class="sub"><i class="fa-solid fa-sitemap"></i> Kiến trúc ba tầng thương hiệu</h3>
+        <table>
+          <thead><tr><th style="width:22%">Tầng</th><th style="width:28%">Đối tượng</th><th>Vai trò &amp; đòn bẩy</th></tr></thead>
+          <tbody>
+            <tr><td><b>Elefante</b></td><td>Người tiêu dùng cá nhân</td><td>Giữ nguyên để nuôi nhận diện và tạo mẫu tham chiếu; là “cửa hàng trưng bày” cho khách B2B xem trước.</td></tr>
+            <tr><td><b>Elefante Business</b></td><td>Doanh nghiệp, agency, ban tổ chức sự kiện</td><td>Đầu phễu B2B: bộ quà theo dịp, bảng giá theo bậc số lượng, SLA giao hàng, hợp đồng khung.</td></tr>
+            <tr><td><b>Elefante Studio</b></td><td>Thương hiệu nước ngoài cần OEM/ODM</td><td>Đầu phễu xuất khẩu: năng lực sản xuất, chứng nhận, MOQ, lead time, mẫu thử.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout warn">
+          <h4><i class="fa-solid fa-circle-info"></i> Điều kiện để định vị trung–cao cấp đứng vững</h4>
+          Phân khúc này không được quyết định bởi giá niêm yết mà bởi <b>ba bằng chứng</b>: (1) chứng nhận an toàn tiếp xúc thực phẩm, (2) kiểm soát chất lượng in/khắc, (3) bao bì và trải nghiệm mở hộp. Nếu thiếu một trong ba, khách sẽ quy về so sánh giá với hàng Trung Quốc 1,65 USD/bình.
+        </div>
+      </div>
+    </section>
+
+    <!-- CH3 -->
+    <section id="sec3" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-chart-line"></i> Chương 3: Thị trường quà tặng doanh nghiệp <small>Quy mô, tốc độ và cấu trúc nhu cầu toàn cầu</small></h2>
+
+        <p>Quà tặng doanh nghiệp nằm trong thị trường <b>promotional products &amp; corporate gifting</b> toàn cầu với mức tăng trưởng ổn định:</p>
+
+        <table>
+          <thead><tr><th style="width:26%">Nguồn</th><th style="width:30%">Quy mô công bố</th><th>Tăng trưởng</th></tr></thead>
+          <tbody>
+            <tr><td><b>Metastat Insight</b></td><td>84,4 tỷ USD (2025) → 113,7 tỷ USD (2033)</td><td>CAGR 3,8% giai đoạn 2026–2033</td></tr>
+            <tr><td><b>GiftAFeeling</b> (tổng hợp)</td><td>90,5 tỷ USD (2023) → khoảng 101 tỷ USD (2026)</td><td>CAGR 3,75% đến 2030</td></tr>
+            <tr><td><b>PPAI</b> (dẫn qua UniqueCustomPins)</td><td>Mỹ: 27,1 tỷ USD (2025), ước 27,45 tỷ USD (2026)</td><td>+1,3% so với 2024</td></tr>
+            <tr><td><b>GiftAFeeling</b></td><td>66% sản phẩm promotional cuối vòng đời đi vào bãi rác</td><td>— (hàm ý lớn cho xu hướng ESG &amp; bình tái sử dụng)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="chart-wrap">
+          <h4>Quy mô thị trường promotional products toàn cầu</h4>
+          <div class="cap">Đơn vị: tỷ USD. Nguồn: Metastat Insight (mốc 2025 và 2033); GiftAFeeling (mốc 2026 ước tính).</div>
+          <div class="chart-box"><canvas id="marketChart"></canvas></div>
+        </div>
+
+        <h3 class="sub"><i class="fa-solid fa-arrow-trend-up"></i> Ba chuyển dịch đang diễn ra</h3>
+        <div class="g3">
+          <div class="box">
+            <h4>Từ vật phẩm rẻ sang quà có công năng</h4>
+            <p>Bình giữ nhiệt nằm trong nhóm quà được giữ lại lâu nhất vì dùng hằng ngày. Đây là lợi thế cấu trúc của Elefante so với quà lưu niệm.</p>
+          </div>
+          <div class="box">
+            <h4>Từ logo đơn lẻ sang bộ nhận diện</h4>
+            <p>Khách yêu cầu đồng bộ màu PMS, hộp, thẻ cảm ơn, và đôi khi cả nội dung số — đúng với 4 hình thức cá nhân hóa đang có.</p>
+          </div>
+          <div class="box">
+            <h4>Từ quà tặng sang nghĩa vụ ESG</h4>
+            <p>Với thông tin 66% quà promotional thành rác, khách EU bắt đầu hỏi về khả năng tái sử dụng và vật liệu — cần câu chuyện “reusable” có bằng chứng.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH4 -->
+    <section id="sec4" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-industry"></i> Chương 4: Mô hình OEM/ODM <small>Ba cấp dịch vụ và điều kiện năng lực</small></h2>
+
+        <p>Elefante đã có sẵn hai yếu tố quan trọng của một xưởng OEM: <b>nền sản phẩm 80 SKU</b> và <b>năng lực hiệu đính thương hiệu</b> (khắc laser, in lụa, in 3D). Cần đóng gói chuẩn hóa thành dịch vụ có thể báo giá và ký hợp đồng xuất khẩu.</p>
+
+        <h3 class="sub"><i class="fa-solid fa-circle-check"></i> 4.1 · Năng lực đã được công bố trên website</h3>
+        <table>
+          <thead><tr><th style="width:26%">Hạng mục</th><th>Nội dung ghi nhận</th></tr></thead>
+          <tbody>
+            <tr><td><b>Vật liệu</b></td><td>Lòng bình inox SUS316, vỏ ngoài inox SUS201 (trang sản phẩm Gingham 800ml).</td></tr>
+            <tr><td><b>Hiệu suất nhiệt</b></td><td>Giữ nóng/lạnh khoảng 6–12 giờ.</td></tr>
+            <tr><td><b>Phương pháp hiệu đính</b></td><td>Khắc laser, in lụa, in 3D; nhận in logo theo yêu cầu.</td></tr>
+            <tr><td><b>Cá nhân hóa</b></td><td>Khắc tên, khắc logo, khắc câu quote, chọn icon.</td></tr>
+            <tr><td><b>Đóng gói quà</b></td><td>“Gift Packaging — hộp quà thiết kế đồng bộ” (mục Quà tặng doanh nghiệp).</td></tr>
+            <tr><td><b>Số lượng</b></td><td>“Số lượng linh hoạt — phù hợp nhiều quy mô doanh nghiệp”.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout warn">
+          <h4><i class="fa-solid fa-circle-question"></i> Bốn điều cần chuẩn hóa nội bộ trước khi chào khách</h4>
+          <b>(1)</b> Xác lập năng lực sản xuất / gia công, địa chỉ xưởng và biên bản đánh giá chất lượng nhà cung cấp.<br>
+          <b>(2)</b> Công suất thực tế mỗi tháng theo từng nhóm dung tích.<br>
+          <b>(3)</b> Tỷ lệ lỗi cho phép và quy trình QC (tiêu chuẩn AQL kiểm định).<br>
+          <b>(4)</b> Lead time mùa cao điểm và trước Tết Nguyên đán / mùa lễ hội cuối năm.
+        </div>
+
+        <h3 class="sub"><i class="fa-solid fa-layer-group"></i> 4.2 · Ba cấp độ dịch vụ</h3>
+        <p>Khách B2B mua theo ba mức can thiệp khác nhau. Niêm yết rõ cả ba giúp Elefante không bị kéo về vai trò “xưởng in logo giá rẻ”:</p>
+
+        <div class="g3">
+          <div class="card">
+            <div class="tagline">Cấp A</div>
+            <h4>OEM — Sản xuất theo thiết kế của khách</h4>
+            <p>Khách gửi bản vẽ kỹ thuật hoặc mẫu gốc; Elefante triển khai khuôn/dung tích, màu, nắp, phụ kiện, in ấn và đóng gói.</p>
+            <p style="margin-top:8px"><span class="pill">MOQ đề xuất 500 pcs/SKU</span> <span class="pill gray">Lead 25–35 ngày</span></p>
+          </div>
+          <div class="card">
+            <div class="tagline">Cấp B</div>
+            <h4>ODM — Thiết kế của Elefante, thương hiệu của khách</h4>
+            <p>Khách chọn từ nền 80 SKU, Elefante phát triển biến thể (màu, form, nắp, bộ quà) và gắn nhận diện khách. Đây là cấp tạo biên lợi nhuận tốt nhất.</p>
+            <p style="margin-top:8px"><span class="pill">MOQ đề xuất 300 pcs/SKU</span> <span class="pill gray">Lead 20–30 ngày</span></p>
+          </div>
+          <div class="card">
+            <div class="tagline">Cấp C</div>
+            <h4>Private Label Gift Program</h4>
+            <p>Trọn gói: chọn SKU, thiết kế hộp, thẻ cảm ơn, khắc tên từng người, đóng gói và giao đến từng địa chỉ hoặc về một điểm.</p>
+            <p style="margin-top:8px"><span class="pill">MOQ đề xuất 100 bộ</span> <span class="pill gray">Lead 15–25 ngày</span></p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h4><i class="fa-solid fa-calculator"></i> Vì sao MOQ nên thấp ở cấp C</h4>
+          Đối thủ Trung Quốc chào MOQ 20–25 pcs với bình trơn 1,65 USD (Sunward), nhưng họ không làm hộp quà theo nhận diện, không khắc tên từng người, không giao theo lịch sự kiện. Cấp C bán <b>dịch vụ</b>, nên MOQ thấp là hợp lý và tạo khác biệt mà không phá giá sản phẩm.
+        </div>
+
+        <h3 class="sub"><i class="fa-solid fa-route"></i> 4.3 · Quy trình sáu bước</h3>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><div class="b"><b>Brief &amp; ngân sách:</b> số lượng, dịp, ngân sách/suất, hạn giao, yêu cầu thị trường đích.</div></div>
+          <div class="step"><div class="n">2</div><div class="b"><b>Đề xuất bộ:</b> 2–3 phương án theo dải giá, kèm mockup 3D và bảng chi phí tách riêng sản phẩm – in – hộp – vận chuyển.</div></div>
+          <div class="step"><div class="n">3</div><div class="b"><b>Mẫu thật:</b> mẫu trơn hoặc mẫu có logo; thời gian 5–7 ngày; chi phí mẫu hoàn lại khi vào đơn từ ngưỡng cam kết.</div></div>
+          <div class="step"><div class="n">4</div><div class="b"><b>Duyệt &amp; ký:</b> chốt PMS màu, vị trí khắc, file in, bao bì, lịch giao; ký xác nhận mẫu để tránh tranh chấp.</div></div>
+          <div class="step"><div class="n">5</div><div class="b"><b>Sản xuất &amp; QC:</b> kiểm đầu – giữa – cuối; ảnh báo cáo theo lô; kiểm tra độ kín, độ bám logo, căn chỉnh.</div></div>
+          <div class="step"><div class="n">6</div><div class="b"><b>Đóng gói &amp; giao:</b> đóng theo từng suất hoặc theo thùng; kèm packing list; hỗ trợ giao nhiều điểm nếu là quà nhân viên.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH5 -->
+    <section id="sec5" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-gift"></i> Chương 5: Kiến trúc bộ quà tặng <small>Sáu bộ chuẩn hóa thay cho 80 SKU rời</small></h2>
+
+        <p>Nguyên tắc: mỗi bộ quà phải trả lời được bốn câu — tặng cho ai, trong dịp gì, ngân sách bao nhiêu, và điều gì khiến người nhận giữ lại. Sáu bộ dưới đây phủ hết các dịp doanh nghiệp thường mua:</p>
+
+        <table>
+          <thead><tr><th style="width:18%">Bộ quà</th><th style="width:26%">Thành phần</th><th style="width:20%">Đối tượng</th><th style="width:16%">Giá bán đề xuất/suất</th><th>Điểm bán</th></tr></thead>
+          <tbody>
+            <tr><td><b>1. Welcome Kit</b></td><td>Bình 500–600ml + hộp + thẻ tên khắc</td><td>Nhân viên mới</td><td>590.000–690.000 ₫</td><td>Cá nhân hóa từng người, giao đúng ngày onboarding</td></tr>
+            <tr><td><b>2. Partner Gift</b></td><td>Bình 800ml + hộp cứng + thiệp</td><td>Đối tác, khách VIP</td><td>850.000–950.000 ₫</td><td>Trình bày trang trọng, đồng bộ nhận diện</td></tr>
+            <tr><td><b>3. Event Edition</b></td><td>Bình 390–480ml + sleeve + tag</td><td>Hội nghị, ra mắt</td><td>390.000–490.000 ₫</td><td>Số lượng lớn, lead ngắn, dễ vận chuyển</td></tr>
+            <tr><td><b>4. Milestone</b></td><td>Bình 800ml + hộp + plaque khắc</td><td>Kỷ niệm 5/10 năm</td><td>1.150.000–1.350.000 ₫</td><td>Giá trị kỷ niệm, khắc tên và mốc thời gian</td></tr>
+            <tr><td><b>5. ESG Reuse Kit</b></td><td>Bình 710ml + túi vải + thẻ câu chuyện</td><td>Chiến dịch ESG</td><td>720.000–820.000 ₫</td><td>Kể được câu chuyện giảm rác thải dùng một lần</td></tr>
+            <tr><td><b>6. Family Set</b></td><td>Bình trẻ em 600ml + bình người lớn</td><td>Quà gia đình, tri ân</td><td>1.050.000–1.250.000 ₫</td><td>Tận dụng nhóm bình nước trẻ em đang có</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="sub"><i class="fa-solid fa-diagram-project"></i> Bản đồ SKU sang bộ quà</h3>
+        <table>
+          <thead><tr><th style="width:30%">Nhóm sản phẩm hiện có</th><th style="width:24%">Dung tích tiêu biểu</th><th>Bộ quà phù hợp</th></tr></thead>
+          <tbody>
+            <tr><td>Ly cà phê</td><td>260–620ml</td><td>Event Edition, Welcome Kit</td></tr>
+            <tr><td>Bình giữ nhiệt</td><td>500–900ml</td><td>Partner Gift, Milestone, ESG Reuse Kit</td></tr>
+            <tr><td>Bình nước trẻ em</td><td>410–710ml</td><td>Family Set</td></tr>
+            <tr><td>Bình có quai / có ống hút</td><td>390–800ml</td><td>Welcome Kit, Event Edition</td></tr>
+            <tr><td>Bình du lịch</td><td>900–1.250ml</td><td>Milestone, Partner Gift</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CH6 -->
+    <section id="sec6" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-certificate"></i> Chương 6: Chứng nhận &amp; Tiêu chuẩn <small>Yêu cầu an toàn tiếp xúc thực phẩm theo từng thị trường</small></h2>
+
+        <p>Bình giữ nhiệt là <b>sản phẩm tiếp xúc trực tiếp với thực phẩm và đồ uống</b> (Food Contact Materials). Để xuất khẩu và tiếp cận các khách hàng doanh nghiệp quốc tế, Elefante cần nắm rõ các tiêu chuẩn bắt buộc theo từng thị trường dưới đây một cách tinh gọn và thực tế:</p>
+
+        <!-- Simplified & Accessible Certification Table -->
+        <table>
+          <thead>
+            <tr>
+              <th style="width:18%">Thị trường / Cấp độ</th>
+              <th style="width:28%">Chứng nhận / Tiêu chuẩn</th>
+              <th style="width:24%">Phạm vi áp dụng</th>
+              <th>Yêu cầu &amp; Hướng dẫn tiếp cận</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b style="color:var(--forest)">🇺🇸 Mỹ</b></td>
+              <td><b>FDA 21 CFR</b><br><span style="font-size:.73rem;color:var(--muted)">CPSIA (trẻ em), California Prop 65</span></td>
+              <td>Lòng bình inox SUS316, nắp PP, gioăng silicon</td>
+              <td><b>Bắt buộc:</b> Báo cáo thử nghiệm thôi nhiễm kim loại nặng và hóa chất theo lô. Nhãn truy xuất bắt buộc với bình trẻ em.</td>
+            </tr>
+            <tr>
+              <td><b style="color:var(--forest)">🇪🇺 Châu Âu (EU)</b></td>
+              <td><b>EC 1935/2004</b><br><span style="font-size:.73rem;color:var(--muted)">LFGB (Đức), DGCCRF (Pháp), REACH</span></td>
+              <td>Thân bình kim loại, phụ kiện nắp &amp; ống hút</td>
+              <td><b>Bắt buộc:</b> Inox áp dụng khung 1935/2004 và tiêu chuẩn LFGB của Đức. Bắt buộc thử nghiệm thôi nhiễm mùi vị và chất cảm quan.</td>
+            </tr>
+            <tr>
+              <td><b style="color:var(--forest)">🇯🇵 Nhật Bản</b></td>
+              <td><b>Food Sanitation Act</b><br><span style="font-size:.73rem;color:var(--muted)">Bộ Y tế &amp; Lao động Nhật (MHLW)</span></td>
+              <td>Toàn bộ dụng cụ chứa đựng thực phẩm</td>
+              <td><b>Khắt khe:</b> Cần chứng nhận thành phần vật liệu và báo cáo kiểm định an toàn vệ sinh (thường yêu cầu hồ sơ tiếng Nhật hoặc tiếng Anh).</td>
+            </tr>
+            <tr>
+              <td><b style="color:var(--forest)">🇰🇷 Hàn Quốc</b></td>
+              <td><b>MFDS Standards</b><br><span style="font-size:.73rem;color:var(--muted)">Bộ An toàn Thực phẩm &amp; Dược phẩm</span></td>
+              <td>Bình, cốc, nắp, ống hút silicon</td>
+              <td><b>Rõ ràng:</b> Báo cáo kiểm định vật liệu tiếp xúc thực phẩm theo danh mục quy chuẩn của MFDS.</td>
+            </tr>
+            <tr>
+              <td><b style="color:var(--forest)">🏭 Nhà máy &amp; Hệ thống</b></td>
+              <td><b>ISO 9001 · ISO 14001</b><br><span style="font-size:.73rem;color:var(--muted)">BSCI / Sedex / SMETA</span></td>
+              <td>Quy trình sản xuất &amp; Trách nhiệm xã hội</td>
+              <td><b>Đòn bẩy thầu lớn:</b> ISO 9001 là điều kiện cơ bản; BSCI/SMETA giúp mở cửa vào các tập đoàn đa quốc gia và chuỗi bán lẻ.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Certification quick cards -->
+        <div class="g2" style="margin-top:16px">
+          <div class="box">
+            <h4><i class="fa-solid fa-shield-check" style="color:var(--ok)"></i> Bộ chứng chỉ tối thiểu (Chào khách bước 1)</h4>
+            <ul>
+              <li><b>Test Report FDA / LFGB:</b> Báo cáo thử nghiệm từ SGS / TÜV / Intertek chứng minh ruột bình inox 316 an toàn.</li>
+              <li><b>Material Data Sheet (MDS):</b> Bảng phân tích thành phần inox SUS316, vỏ SUS201, nhựa PP Food Grade và Silicone.</li>
+              <li><b>Chứng nhận ISO 9001:</b> Bằng chứng hệ thống quản lý chất lượng của xưởng sản xuất / đối tác gia công.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4><i class="fa-solid fa-print" style="color:var(--clay)"></i> Lưu ý riêng về kỹ thuật In &amp; Khắc</h4>
+            <ul>
+              <li><b>Khắc Laser:</b> Không dùng hóa chất/mực in, không rủi ro thôi nhiễm → Dễ thông quan và kiểm định nhất.</li>
+              <li><b>In Lụa &amp; In 3D:</b> Cần yêu cầu nhà cung cấp mực cung cấp chứng chỉ an toàn (RoHS / REACH) không chứa chì và kim loại nặng.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH7 -->
+    <section id="sec7" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-folder-open"></i> Chương 7: Hồ sơ &amp; điều kiện đăng ký Alibaba.com <small>Chuẩn bị trước khi ký hợp đồng</small></h2>
+
+        <p>Đây là bộ hồ sơ <b>bắt buộc</b> để xác minh pháp nhân. Sai tên, sai địa chỉ hoặc giấy hết hạn là nguyên nhân phổ biến nhất khiến xác minh kéo dài.</p>
+
+        <div class="g2">
+          <div class="box">
+            <h4><i class="fa-solid fa-id-card"></i> Năm nhóm giấy tờ</h4>
+            <ul>
+              <li><b>Giấy phép kinh doanh</b> (đang hoạt động).</li>
+              <li><b>Giấy quyền sử dụng đất</b> hoặc <b>hợp đồng thuê nhà/xưởng</b>.</li>
+              <li><b>Hóa đơn điện thoại công ty trong 3 tháng.</b></li>
+              <li><b>Giấy thông tin tài khoản ngân hàng công ty</b> hoặc của người đại diện pháp luật trên GPKD.</li>
+              <li><b>CCCD 2 mặt</b> của người đại diện pháp luật trên GPKD.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4><i class="fa-solid fa-shield-halved"></i> Nguyên tắc tránh bị trả hồ sơ</h4>
+            <ul>
+              <li>Tên pháp nhân khớp <b>tuyệt đối</b> giữa GPKD, tài khoản ngân hàng và hóa đơn.</li>
+              <li>Hóa đơn điện thoại phải đứng tên <b>công ty</b>, không phải cá nhân.</li>
+              <li>Scan màu, không cắt góc, không chụp nghiêng, không che số.</li>
+              <li>CCCD còn hạn; nếu đổi người đại diện phải cập nhật GPKD trước.</li>
+              <li>Chuẩn bị bản dịch tiếng Anh có công chứng cho bộ hồ sơ nộp nền tảng.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH8 -->
+    <section id="sec8" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-diagram-project"></i> Chương 8: Quy trình hai giai đoạn &amp; timeline 12 tháng <small>Từ ký hợp đồng đến tổng kết năm đầu</small></h2>
+
+        <h3 class="sub"><i class="fa-solid fa-1"></i> Giai đoạn 1 — Tạo tài khoản và kích hoạt</h3>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><div class="b"><b>Tạo tài khoản nhà bán hàng</b> và chọn gói dịch vụ.</div></div>
+          <div class="step"><div class="n">2</div><div class="b"><b>Ký kết và thanh toán hợp đồng.</b></div></div>
+          <div class="step"><div class="n">3</div><div class="b"><b>Chốt phương án demo Minisite</b> và danh mục sản phẩm đưa lên.</div></div>
+          <div class="step"><div class="n">4</div><div class="b"><b>Đào tạo vận hành 1-1 (2 buổi):</b> giới thiệu tài khoản, chức năng, đăng sản phẩm, khai thác RFQ.</div></div>
+          <div class="step"><div class="n">5</div><div class="b"><b>Thiết kế – feedback – kích hoạt</b> tài khoản. Thời gian chuẩn bị: 0–1 tháng đầu tiên.</div></div>
+        </div>
+
+        <h3 class="sub"><i class="fa-solid fa-2"></i> Giai đoạn 2 — Vận hành 12 tháng</h3>
+        <p>Lộ trình tối ưu hóa vận hành và kinh doanh B2B cho Elefante:</p>
+
+        <div class="tl">
+          <div class="item"><div class="when">11/2026 · Thanh toán &amp; chuẩn bị</div><div class="what">Hoàn tất ký kết; chuẩn bị hình ảnh và thông tin sản phẩm; tham gia lớp đào tạo riêng 1-1.</div></div>
+          <div class="item"><div class="when">12/2026 · Chính thức khởi động</div><div class="what">Bắt đầu tính phí hợp đồng 1 năm; <b>đăng 300 sản phẩm trong tháng đầu</b>; thiết lập quảng cáo tự động; trả lời RFQ hằng ngày.</div></div>
+          <div class="item"><div class="when">01–02/2027 · Duy trì vận hành</div><div class="what">Giữ điểm vận hành <b>tối thiểu 2 sao</b>; gửi <b>40 báo giá mỗi tháng</b>; đào tạo tận dụng tính năng dựa trên chỉ số báo cáo.</div></div>
+          <div class="item"><div class="when">03/2027 · March Expo</div><div class="what">Tận dụng điểm lưu lượng cao của nền tảng; hướng tới <b>3–4 sao</b>; đẩy mạnh sản phẩm RTS (hàng sẵn kho).</div></div>
+          <div class="item"><div class="when">04–05/2027 · Kiểm tra hoạt động 6 tháng</div><div class="what">Chuyển đổi người mua; <b>ít nhất 2 khách đến thăm xưởng</b>; xây dựng “sản phẩm chủ lực”; duy trì tổng số lượng giao dịch và tín nhiệm <b>khoảng 100 trở lên</b>.</div></div>
+          <div class="item"><div class="when">06–08/2027 · Vận hành tăng trưởng</div><div class="what">Chuẩn bị cho <b>Super September</b>; lên kế hoạch hoạt động offline; duy trì vị trí Top &amp; Super; đăng video ngắn.</div></div>
+          <div class="item"><div class="when">09–11/2027 · Chuyển đổi &amp; phát triển</div><div class="what">Tận dụng lưu lượng từ sự kiện lớn; hướng tới trở thành điển hình thành công của nền tảng; xây dựng tỷ lệ chuyển đổi đơn hàng tốt.</div></div>
+          <div class="item"><div class="when">12/2027 · Tổng kết</div><div class="what">Tổng kết hoạt động 1 năm; lập kế hoạch và điều chỉnh cho năm tiếp theo.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH9 -->
+    <section id="sec9" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-gauge-high"></i> Chương 9: Vận hành sau kích hoạt <small>Nhịp làm việc và bộ chỉ số tối thiểu</small></h2>
+
+        <p>Sau khi tài khoản kích hoạt, phản hồi nhanh và chính xác là yếu tố quyết định thứ hạng hiển thị và tỷ lệ chốt đơn B2B.</p>
+
+        <h3 class="sub"><i class="fa-solid fa-clock"></i> Nhịp vận hành</h3>
+        <table>
+          <thead><tr><th style="width:16%">Chu kỳ</th><th style="width:30%">Việc bắt buộc</th><th>Chỉ số cần xem</th></tr></thead>
+          <tbody>
+            <tr><td><b>Hằng ngày</b></td><td>Trả lời RFQ và tin nhắn; kiểm tra đơn chờ xác nhận</td><td>Thời gian phản hồi trung bình; số RFQ mới</td></tr>
+            <tr><td><b>Hằng tuần</b></td><td>Đăng 15–20 sản phẩm mới hoặc cập nhật; rà soát 5 SKU có lượt xem cao nhất</td><td>Tỷ lệ xem → hỏi → báo giá</td></tr>
+            <tr><td><b>Hằng tháng</b></td><td>Gửi đủ 40 báo giá; đánh giá hiệu quả quảng cáo; cập nhật bảng giá theo chi phí</td><td>Chi phí trên mỗi RFQ; tỷ lệ báo giá → đơn</td></tr>
+            <tr><td><b>Hằng quý</b></td><td>Audit nội dung 20 SKU; kiểm tra chứng nhận còn hạn; đàm phán lại cước vận chuyển</td><td>Tỷ lệ giao đúng hạn; tỷ lệ khiếu nại</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="sub"><i class="fa-solid fa-users"></i> Đội ngũ tối thiểu</h3>
+        <div class="g3">
+          <div class="box">
+            <h4>Account manager</h4>
+            <p>Chịu trách nhiệm RFQ, báo giá, theo đơn, và là đầu mối duy nhất với khách.</p>
+          </div>
+          <div class="box">
+            <h4>Content &amp; listing</h4>
+            <p>Hình ảnh, thông số, tiêu đề, từ khóa, video ngắn. Mục tiêu 300 SKU trong tháng đầu.</p>
+          </div>
+          <div class="box">
+            <h4>Sales B2B</h4>
+            <p>Chăm 20–30 tài khoản tiềm năng, xử lý mẫu, đàm phán MOQ và điều khoản giao.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH10 -->
+    <section id="sec10" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-chalkboard-user"></i> Chương 10: Training khách hàng &amp; nội bộ <small>Hai buổi 1-1, lớp online hằng tuần, review định kỳ</small></h2>
+
+        <p>Chương trình đào tạo đi kèm hợp đồng nền tảng được tinh chỉnh riêng cho đặc thù ngành <b>quà tặng &amp; drinkware OEM</b>:</p>
+
+        <h3 class="sub"><i class="fa-solid fa-1"></i> Buổi 1-1 số 1 — Làm chủ tài khoản (90 phút)</h3>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><div class="b">Cấu trúc tài khoản, phân quyền, Minisite và cách nền tảng tính điểm vận hành sao.</div></div>
+          <div class="step"><div class="n">2</div><div class="b">Đăng sản phẩm đúng chuẩn: tiêu đề SEO, thuộc tính vật liệu inox 316, ảnh, video, giá theo bậc số lượng.</div></div>
+          <div class="step"><div class="n">3</div><div class="b">Thực hành tại chỗ: đăng 5 SKU mẫu và chấm chéo theo checklist.</div></div>
+        </div>
+
+        <h3 class="sub"><i class="fa-solid fa-2"></i> Buổi 1-1 số 2 — Khai thác RFQ &amp; chốt đơn (90 phút)</h3>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><div class="b">Đọc RFQ đúng: phân biệt khách thật, khách dò giá, và đại lý quảng cáo.</div></div>
+          <div class="step"><div class="n">2</div><div class="b">Mẫu báo giá 1 trang: sản phẩm, in, hộp, cước, lead time, điều kiện thanh toán.</div></div>
+          <div class="step"><div class="n">3</div><div class="b">Xử lý ba tình huống khó: ép giá đối thủ Trung Quốc, đòi MOQ thấp, đòi mẫu miễn phí.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH11 -->
+    <section id="sec11" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-tags"></i> Chương 11: Gói dịch vụ &amp; ngân sách <small>Sáu cấu hình, quy đổi VND theo tỷ giá 26.000</small></h2>
+
+        <p>Bảng dưới là <b>khung ngân sách dịch vụ</b> tham chiếu để lập kế hoạch. Chọn cấu hình phù hợp ở bộ chọn bên dưới để xem tổng chi phí năm đầu:</p>
+
+        <table>
+          <thead><tr><th style="width:26%">Cấu hình</th><th style="width:14%">Thời hạn</th><th style="width:18%">USD</th><th style="width:20%">VND (×26.000)</th><th>Phù hợp khi</th></tr></thead>
+          <tbody>
+            <tr><td><b>Basic</b></td><td>1 năm</td><td>2.399</td><td>62.374.000 ₫</td><td>Kiểm chứng thị trường, đội mỏng</td></tr>
+            <tr><td><b>Basic</b></td><td>2 năm</td><td>4.199</td><td>109.174.000 ₫</td><td>Muốn giảm chi phí/năm, cam kết dài</td></tr>
+            <tr><td><b>Standard</b></td><td>1 năm</td><td>3.999</td><td>103.974.000 ₫</td><td>Có 1 người phụ trách bán hàng chuyên trách</td></tr>
+            <tr><td><b>Standard</b></td><td>2 năm</td><td>6.999</td><td>181.974.000 ₫</td><td>Đã có khách lặp lại, cần duy trì hạng</td></tr>
+            <tr><td><b>Premium (Guarantee)</b></td><td>1 năm</td><td>5.999</td><td>155.974.000 ₫</td><td>Cần cam kết hỗ trợ vận hành và ưu tiên hiển thị</td></tr>
+            <tr><td><b>Premium (Guarantee)</b></td><td>2 năm</td><td>9.999</td><td>259.974.000 ₫</td><td>Mục tiêu xuất khẩu nghiêm túc, có KPI</td></tr>
+          </tbody>
+        </table>
+
+        <div class="sel">
+          <h4 class="mini-h">Chọn cấu hình để tính ngân sách</h4>
+          <div class="sel-grid">
+            <label class="opt"><input type="radio" name="pkg" value="Basic|1 năm|2399"><span class="nm">Basic · 1 năm</span><span class="pr">2.399 USD</span></label>
+            <label class="opt"><input type="radio" name="pkg" value="Basic|2 năm|4199"><span class="nm">Basic · 2 năm</span><span class="pr">4.199 USD</span></label>
+            <label class="opt"><input type="radio" name="pkg" value="Standard|1 năm|3999"><span class="nm">Standard · 1 năm</span><span class="pr">3.999 USD</span></label>
+            <label class="opt"><input type="radio" name="pkg" value="Standard|2 năm|6999"><span class="nm">Standard · 2 năm</span><span class="pr">6.999 USD</span></label>
+            <label class="opt"><input type="radio" name="pkg" value="Premium|1 năm|5999"><span class="nm">Premium · 1 năm</span><span class="pr">5.999 USD</span></label>
+            <label class="opt"><input type="radio" name="pkg" value="Premium|2 năm|9999"><span class="nm">Premium · 2 năm</span><span class="pr">9.999 USD</span></label>
+          </div>
+          <div class="sel-actions">
+            <button class="btn ghost" type="button" id="clearPkg">Xóa lựa chọn</button>
+            <div class="out" id="pkgOut">Chưa xác định — chọn một cấu hình để xem ngân sách.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH12 -->
+    <section id="sec12" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-users-viewfinder"></i> Chương 12: Benchmark 8 nhà cung cấp cùng ngành <small>Kèm liên kết trực tiếp gian hàng Alibaba.com &amp; website chính thức</small></h2>
+
+        <p>Bảng phân tích đối thủ cạnh tranh trực tiếp trong ngành sản xuất và xuất khẩu bình giữ nhiệt / drinkware B2B, giúp Elefante định vị lợi thế và chiến lược chào hàng:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width:20%">Nhà cung cấp &amp; Link gian hàng</th>
+              <th style="width:13%">Vị trí &amp; Năm</th>
+              <th style="width:25%">Quy mô &amp; Năng lực sản xuất</th>
+              <th>Điểm nổi bật, MOQ &amp; Chiến lược</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Warmus</b><br>
+                <span style="font-size:.72rem;color:var(--muted)">Yongkang Warmus Metal</span><br>
+                <a href="https://warmus.en.alibaba.com/" target="_blank" class="btn-ali"><i class="fa-solid fa-store"></i> Gian hàng Alibaba</a><br>
+                <a href="https://www.warmus-cn.com/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> warmus-cn.com</a>
+              </td>
+              <td>Yongkang, Trung Quốc<br><span style="font-size:.72rem;color:var(--muted)">Năm 2001</span></td>
+              <td>28.000 m²; 260+ nhân sự; 8 dây chuyền; 600.000 pcs/tháng</td>
+              <td>Định vị rõ cho <b>“gift &amp; promotional buyers”</b>; OEM và ODM tách riêng; có dòng sản phẩm KIDS và TRITAN.</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Golmate</b><br>
+                <span style="font-size:.72rem;color:var(--muted)">Golmate Enterprise</span><br>
+                <a href="https://golmate.en.alibaba.com/" target="_blank" class="btn-ali"><i class="fa-solid fa-store"></i> Gian hàng Alibaba</a><br>
+                <a href="https://www.golmate.com/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> golmate.com</a>
+              </td>
+              <td>Trung Quốc<br><span style="font-size:.72rem;color:var(--muted)">15+ năm</span></td>
+              <td>Khuôn tùy chỉnh; hỗ trợ chuẩn FDA/LFGB; đóng gói bán lẻ</td>
+              <td><b>MOQ 1.000 pcs</b>; tham gia Canton Fair (Hall 4.2, Booth M20) — kênh hội chợ B2B truyền thống rất mạnh.</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Eco Drinkware</b><br>
+                <span style="font-size:.72rem;color:var(--muted)">Hangzhou Everich / Eco Houseware</span><br>
+                <a href="https://everich.en.alibaba.com/" target="_blank" class="btn-ali"><i class="fa-solid fa-store"></i> Gian hàng Alibaba</a><br>
+                <a href="https://www.eco-drinkware.com/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> eco-drinkware.com</a>
+              </td>
+              <td>Hàng Châu, Trung Quốc<br><span style="font-size:.72rem;color:var(--muted)">10+ năm</span></td>
+              <td>20.000 m²; 8.000 pcs/ngày; ISO 9001; FDA &amp; LFGB</td>
+              <td>Nêu “Low MOQ”; đã phục vụ hơn <b>2.000+ thương hiệu toàn cầu</b>. Mạnh về bình giữ nhiệt thân thiện môi trường.</td>
+            </tr>
+            <tr>
+              <td>
+                <b>KingStar</b><br>
+                <span style="font-size:.72rem;color:var(--muted)">Shanghai Kingstar</span><br>
+                <a href="https://kingstarbottle.en.alibaba.com/" target="_blank" class="btn-ali"><i class="fa-solid fa-store"></i> Gian hàng Alibaba</a><br>
+                <a href="https://waterbottle.tech/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> waterbottle.tech</a>
+              </td>
+              <td>Thượng Hải, Trung Quốc<br><span style="font-size:.72rem;color:var(--muted)">12+ năm</span></td>
+              <td>Bình, tumbler, ly, bình cà phê; giao hàng tận nơi DDP toàn cầu</td>
+              <td>Mạnh về giải pháp trọn gói <b>“one-stop OEM/ODM”</b>; hỗ trợ thiết kế 3D và làm mẫu thử nhanh.</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Sunward</b><br>
+                <span style="font-size:.72rem;color:var(--muted)">Hangzhou Sunward</span><br>
+                <a href="https://sunward.en.alibaba.com/" target="_blank" class="btn-ali"><i class="fa-solid fa-store"></i> Gian hàng Alibaba</a><br>
+                <a href="http://www.sunwardtrading.com/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> sunwardtrading.com</a>
+              </td>
+              <td>Hàng Châu, Trung Quốc<br><span style="font-size:.72rem;color:var(--muted)">Năm 2013</span></td>
+              <td>Tumbler 12oz và 20oz; in UV, in lụa, khắc laser</td>
+              <td><b>MOQ 20–25 pcs</b>, giá cực rẻ từ <b>1,65 USD/chiếc</b>; lead 15–25 ngày — đại diện tiêu biểu cho phân khúc giá rẻ hàng loạt.</td>
+            </tr>
+            <tr>
+              <td>
+                <b>EGO</b><br>
+                <span style="font-size:.72rem;color:var(--muted)">Yongkang Ego Industry</span><br>
+                <a href="https://egobottle.en.alibaba.com/" target="_blank" class="btn-ali"><i class="fa-solid fa-store"></i> Gian hàng Alibaba</a><br>
+                <a href="https://www.egowaterbottle.com/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> egowaterbottle.com</a>
+              </td>
+              <td>Yongkang, Trung Quốc<br><span style="font-size:.72rem;color:var(--muted)">Năm 2014</span></td>
+              <td>20.000 m²; 300+ nhân sự; 20.000 pcs/ngày</td>
+              <td>Quy trình OEM 6 bước chuẩn hóa; danh mục rộng từ bình nhựa Tritan, inox 304/316 đến bình chân không.</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Toptrue</b><br>
+                <span style="font-size:.72rem;color:var(--muted)">Yongkang Toptrue</span><br>
+                <a href="https://toptrue.en.alibaba.com/" target="_blank" class="btn-ali"><i class="fa-solid fa-store"></i> Gian hàng Alibaba</a><br>
+                <a href="https://www.toptruebottle.com/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> toptruebottle.com</a>
+              </td>
+              <td>Yongkang, Trung Quốc<br><span style="font-size:.72rem;color:var(--muted)">Năm 2008</span></td>
+              <td>350+ mẫu sản phẩm; đầy đủ kiểm nghiệm FDA, LFGB và CE</td>
+              <td>Điểm mạnh là <b>hồ sơ kiểm nghiệm hoàn chỉnh</b> cho thị trường Âu–Mỹ; phục vụ nhóm khách hàng khắt khe về pháp lý.</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Sunsum</b><br>
+                <span style="font-size:.72rem;color:var(--muted)">Ningbo Sunsum Household</span><br>
+                <a href="https://sunsum.en.alibaba.com/" target="_blank" class="btn-ali"><i class="fa-solid fa-store"></i> Gian hàng Alibaba</a><br>
+                <a href="https://www.sunsumchina.com/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> sunsumchina.com</a>
+              </td>
+              <td>Ninh Ba, Trung Quốc<br><span style="font-size:.72rem;color:var(--muted)">10+ năm</span></td>
+              <td>Tumbler 16–40oz, bình trẻ em, hộp cơm giữ nhiệt</td>
+              <td>Cam kết phản hồi trong 24 giờ; mạng lưới xuất khẩu đa quốc gia; danh mục sản phẩm cập nhật theo trend nhanh.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="sub"><i class="fa-solid fa-lightbulb"></i> Bài học chiến lược cho Elefante</h3>
+        <div class="g3">
+          <div class="box">
+            <h4>1. Không cạnh tranh bằng giá phôi trơn</h4>
+            <p>Sunward bán 1,65 USD/bình trơn. Elefante cần tập trung vào <b>bộ quà đóng gói cao cấp</b> và dịch vụ khắc tên từng người theo nhận diện.</p>
+          </div>
+          <div class="box">
+            <h4>2. Khai thác khoảng trống “Gifting Set”</h4>
+            <p>Các đối thủ chủ yếu bán bình rời. Elefante có cơ hội dẫn đầu khi đóng gói thành bộ quà kèm phụ kiện, sổ da, bút, túi vải ESG.</p>
+          </div>
+          <div class="box">
+            <h4>3. Số hóa giấy tờ kiểm nghiệm</h4>
+            <p>Khách B2B quốc tế sẵn sàng trả giá cao hơn 15–25% cho các xưởng có sẵn Test Report FDA, LFGB và quy trình kiểm hàng AQL minh bạch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH13 -->
+    <section id="sec13" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-fire"></i> Chương 13: Các sản phẩm Drinkware xu hướng trên Alibaba.com <small>Top sản phẩm tìm kiếm cao, biên lợi nhuận tốt năm 2026–2027</small></h2>
+
+        <p>Phân tích các dòng sản phẩm bình nước và quà tặng doanh nghiệp đang có lưu lượng tìm kiếm (Search Volume) và số lượng yêu cầu báo giá (Inquiries) cao nhất trên Alibaba.com hiện nay, giúp Elefante định hướng danh mục R&amp;D và đăng tải:</p>
+
+        <div class="g2" style="margin-top:16px">
+          <!-- Item 1 -->
+          <div class="trend-card">
+            <div>
+              <span class="trend-badge"><i class="fa-solid fa-chart-simple"></i> Global Hot Trend</span>
+              <div class="trend-title">1. Ly giữ nhiệt 40oz quai xách kèm ống hút (Stanley-style Tumbler)</div>
+              <div class="trend-desc">Dung tích lớn 40oz (1.18L), thân inox 304/316 hai lớp chân không, tay cầm công thái học tiện lợi, vừa khay để cốc xe hơi. Giữ lạnh 24–36 giờ. Phù hợp in UV 360 độ hoặc khắc laser logo cỡ lớn.</div>
+            </div>
+            <a href="https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&SearchText=40oz+tumbler+with+handle" target="_blank" class="btn-ali" style="width:fit-content"><i class="fa-solid fa-arrow-up-right-from-square"></i> Xem sản phẩm trên Alibaba.com</a>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="trend-card">
+            <div>
+              <span class="trend-badge"><i class="fa-solid fa-gem"></i> Phân khúc cao cấp</span>
+              <div class="trend-title">2. Bình giữ nhiệt lót gốm Ceramic cao cấp (SUS316 + Ceramic)</div>
+              <div class="trend-desc">Lòng bình tráng phủ lớp gốm Ceramic kháng khuẩn, không bám cặn, không biến đổi mùi vị khi đựng cà phê, nước trái cây hay trà. Giải pháp hoàn hảo cho quà tặng đối tác VIP và khách hàng sành điệu.</div>
+            </div>
+            <a href="https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&SearchText=ceramic+coated+vacuum+flask" target="_blank" class="btn-ali" style="width:fit-content"><i class="fa-solid fa-arrow-up-right-from-square"></i> Xem sản phẩm trên Alibaba.com</a>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="trend-card">
+            <div>
+              <span class="trend-badge"><i class="fa-solid fa-microchip"></i> Smart Tech Gifting</span>
+              <div class="trend-title">3. Bình giữ nhiệt nắp cảm ứng LED hiển thị nhiệt độ</div>
+              <div class="trend-desc">Tích hợp chip cảm biến và màn hình LED trên nắp chạm để xem nhiệt độ nước bên trong. Pin tích hợp độ bền 500 ngày không cần sạc. Là sản phẩm quà tặng công nghệ cực kỳ ăn khách tại các sự kiện &amp; hội nghị.</div>
+            </div>
+            <a href="https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&SearchText=smart+led+temperature+display+water+bottle" target="_blank" class="btn-ali" style="width:fit-content"><i class="fa-solid fa-arrow-up-right-from-square"></i> Xem sản phẩm trên Alibaba.com</a>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="trend-card">
+            <div>
+              <span class="trend-badge"><i class="fa-solid fa-leaf"></i> Xu hướng ESG &amp; Eco</span>
+              <div class="trend-title">4. Cốc cà phê du lịch kết hợp vỏ gỗ bần Cork / Bamboo</div>
+              <div class="trend-desc">Ruột inox SUS304/316 kết hợp vỏ ngoài bằng vật liệu tái sinh tự nhiên (gỗ bần Cork, tre tự nhiên Bamboo). Đáp ứng hoàn hảo tiêu chí mua sắm bền vững (ESG) của các tập đoàn Âu–Mỹ.</div>
+            </div>
+            <a href="https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&SearchText=eco+friendly+bamboo+cork+coffee+mug" target="_blank" class="btn-ali" style="width:fit-content"><i class="fa-solid fa-arrow-up-right-from-square"></i> Xem sản phẩm trên Alibaba.com</a>
+          </div>
+        </div>
+
+        <!-- Large featured card -->
+        <div class="card" style="margin-top:16px;border-left:4px solid var(--forest)">
+          <div class="tagline">Trọn gói giải pháp quà tặng doanh nghiệp</div>
+          <h4><i class="fa-solid fa-boxes-packing" style="color:var(--clay)"></i> 5. Set Quà tặng Doanh nghiệp trọn gói (Executive Corporate Gift Set)</h4>
+          <p>Bao gồm: Bình giữ nhiệt khắc logo cá nhân hóa + Sổ tay bìa da cao cấp + Bút ký kim loại + Hộp quà nam châm lót mút định hình theo nhận diện thương hiệu. Đây là phân khúc có <b>giá trị đơn hàng cao (High AOV)</b> và biên lợi nhuận gộp trên 35–45%.</p>
+          <div style="margin-top:12px">
+            <a href="https://www.alibaba.com/trade/search?fsb=y&IndexArea=product_en&SearchText=custom+corporate+gift+set+vacuum+flask" target="_blank" class="btn-ali"><i class="fa-solid fa-arrow-up-right-from-square"></i> Xem các bộ Gift Set phổ biến trên Alibaba.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CH14 -->
+    <section id="sec14" class="sec">
+      <div class="wrap">
+        <h2 class="sec-h"><i class="fa-solid fa-calendar-check"></i> Chương 14: KPI 12 tháng, rủi ro &amp; nguồn tham chiếu <small>Điều kiện thành công và biện pháp kiểm soát</small></h2>
+
+        <h3 class="sub"><i class="fa-solid fa-bullseye"></i> KPI theo quý</h3>
+        <table>
+          <thead><tr><th style="width:14%">Giai đoạn</th><th style="width:28%">Mục tiêu chính</th><th style="width:22%">Chỉ số</th><th>Ngưỡng đạt</th></tr></thead>
+          <tbody>
+            <tr><td><b>Q4/2026</b></td><td>Hoàn tất hồ sơ, kích hoạt tài khoản</td><td>SKU đăng tải</td><td>300 SKU trong tháng đầu</td></tr>
+            <tr><td><b>Q1/2027</b></td><td>Duy trì vận hành, tham gia March Expo</td><td>RFQ &amp; điểm vận hành</td><td>40 báo giá/tháng; ≥2 sao, hướng 3–4 sao</td></tr>
+            <tr><td><b>Q2/2027</b></td><td>Chuyển đổi đơn hàng đầu tiên</td><td>Đơn hàng &amp; khách thăm xưởng</td><td>≥2 khách đến thăm; 100 giao dịch tín nhiệm</td></tr>
+            <tr><td><b>Q3/2027</b></td><td>Tăng trưởng qua Super September</td><td>Doanh thu B2B</td><td>Tỷ trọng B2B ≥ 25% tổng doanh thu</td></tr>
+            <tr><td><b>Q4/2027</b></td><td>Tổng kết, mở rộng</td><td>Khách lặp lại</td><td>≥30% khách đặt đơn thứ hai</td></tr>
+          </tbody>
+        </table>
+
+        <h3 class="sub"><i class="fa-solid fa-triangle-exclamation"></i> Năm rủi ro và cách chặn</h3>
+        <div class="g2">
+          <div class="box">
+            <h4>Rủi ro thương mại</h4>
+            <ul>
+              <li><b>Bị so giá:</b> khách lấy giá Trung Quốc 1,65 USD làm mốc → chặn bằng cách bán theo bộ quà tặng có đóng hộp, không bán phôi lẻ.</li>
+              <li><b>MOQ không đủ hấp dẫn:</b> đối thủ nhận 20–25 pcs → giữ cấp C ở 100 bộ, không hạ sản phẩm xuống dưới 300 pcs.</li>
+              <li><b>Mùa vụ:</b> đơn quà thường dồn vào Q4 → nên xúc tiến chào hàng và chốt lịch sản xuất từ tháng 8.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Rủi ro vận hành &amp; pháp lý</h4>
+            <ul>
+              <li><b>Chứng nhận không đúng phạm vi:</b> dùng báo cáo của phôi trơn cho sản phẩm đã in sơn → cần test lại mực in thực tế.</li>
+              <li><b>Phản hồi chậm:</b> mất thứ hạng sao → đặt SLA phản hồi dưới 8 giờ và phân công nhân sự trực luân phiên.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout">
+          <h4><i class="fa-solid fa-flag-checkered"></i> Điều kiện thành công</h4>
+          Đề án này đứng vững nếu Elefante chấp nhận ba thay đổi: <b>(1)</b> công bố giá theo bậc số lượng thay vì ẩn toàn bộ; <b>(2)</b> xây dựng danh mục giải pháp quà tặng có đóng gói hoàn chỉnh; <b>(3)</b> chuẩn bị sẵn bộ chứng nhận tiếp xúc thực phẩm trước khi chào khách quốc tế.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div>
+          <h5>ELEFANTE — Đề án thương hiệu quà tặng &amp; OEM 2027</h5>
+          <p>Tài liệu nội bộ phục vụ lập kế hoạch chiến lược xuất khẩu và thương mại B2B toàn cầu.</p>
+        </div>
+        <div>
+          <h5>Mục lục nhanh</h5>
+          <ul>
+            <li><a href="#sec1" style="color:#cfe0d6">Chẩn đoán</a> · <a href="#sec4" style="color:#cfe0d6">OEM/ODM</a> · <a href="#sec6" style="color:#cfe0d6">Chứng nhận</a></li>
+            <li><a href="#sec11" style="color:#cfe0d6">Ngân sách</a> · <a href="#sec12" style="color:#cfe0d6">Benchmark</a> · <a href="#sec13" style="color:#cfe0d6">Sản phẩm xu hướng</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  const ctx = document.getElementById('marketChart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2023', '2025', '2026 (ước tính)', '2033'],
+        datasets: [{
+          label: 'Tỷ USD',
+          data: [90.5, 84.4, 101, 113.7],
+          backgroundColor: ['#c9d6cf', '#7d9c8c', '#c2643f', '#14312b'],
+          borderRadius: 6,
+          maxBarThickness: 64
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => c.parsed.y + ' tỷ USD' } }
+        },
+        scales: {
+          y: { beginAtZero: true, ticks: { callback: v => v + 'B', color: '#6d7a74' }, grid: { color: '#eee7da' } },
+          x: { ticks: { color: '#6d7a74' }, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  (function () {
+    const opts = Array.from(document.querySelectorAll('.opt'));
+    const out = document.getElementById('pkgOut');
+    const clear = document.getElementById('clearPkg');
+    function reset() {
+      opts.forEach(o => { o.classList.remove('on'); const i = o.querySelector('input'); if (i) i.checked = false; });
+      if (out) out.textContent = 'Chưa xác định — chọn một cấu hình để xem ngân sách.';
+    }
+    opts.forEach(o => {
+      o.addEventListener('click', e => {
+        e.preventDefault();
+        const input = o.querySelector('input');
+        opts.forEach(x => x.classList.remove('on'));
+        o.classList.add('on');
+        if (input) input.checked = true;
+        const [name, term, usd] = (input ? input.value : '').split('|');
+        const vnd = Number(usd) * 26000;
+        if (out) out.innerHTML = 'Đã chọn: <b>' + name + ' · ' + term + '</b> — ' + Number(usd).toLocaleString('en-US') + ' USD ≈ <b>' + vnd.toLocaleString('vi-VN') + ' ₫</b>';
+      });
+    });
+    if (clear) clear.addEventListener('click', reset);
+  })();
+</script>
+</body>
+</html>
